@@ -31,7 +31,7 @@ const ReferralDashboard = () => {
     gap: 1,
   });
 
-  return (
+  return (<>
     <Box
       sx={{
         backgroundColor: '#060614',
@@ -79,6 +79,7 @@ const ReferralDashboard = () => {
         {activeTab === 'bonus' && <BonusCodes />}
       </Box>
     </Box>
+  </>
   );
 };
 

@@ -6,7 +6,6 @@ import Questions from './Header1/FAQ/Questions';
 import UpgradePremium from './Header1/ReferEarn/UpgradePremium';
 import Task from './Header1/Tasks/Task';
 import Testimonials from './Header1/Testimonials/Testimonials';
-import Footer from '../components/Layout/Footer';
 import { useAuth } from '../pages/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -44,7 +43,6 @@ const MainLandingPage = () => {
       <Box id="faq">
         <Questions />
       </Box>
-      <Footer/>
     </>
   );
 };

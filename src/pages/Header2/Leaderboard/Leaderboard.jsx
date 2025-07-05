@@ -30,6 +30,7 @@ const topThreeColors = ['#FDDE69', '#DFE3E6', '#EEC195'];
 
 const Leaderboard = () => {
   return (
+    <>
     <Paper
       sx={{
         color: '#fff',
@@ -133,6 +134,7 @@ const Leaderboard = () => {
         </TableBody>
       </Table>
     </Paper>
+</>
   );
 };
 

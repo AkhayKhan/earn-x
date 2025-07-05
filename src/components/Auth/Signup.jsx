@@ -8,8 +8,6 @@ import {
     Stack,
 } from '@mui/material';
 import bgimg from '../../assets/images/1381cdc04af51adb944a9087e3089b5231590653.png';
-import mainimg from '../../assets/images/ef6cc216a9281d36480774a9e6fd429864f1e22b (1).png';
-import Footer from '../Layout/Footer';
 
 const CustomInput = ({ label }) => (
     <Box sx={{
@@ -72,7 +70,6 @@ const Signup = () => {
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    backgroundImage: `url(${mainimg})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     zIndex: 0
@@ -174,7 +171,6 @@ const Signup = () => {
                 </Typography>
             </Box>
         </Box>
-        <Footer/>
         </>
     );
 };

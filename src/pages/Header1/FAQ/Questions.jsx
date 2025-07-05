@@ -15,7 +15,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { motion } from 'framer-motion';
 
 import bgimg from '../../../assets/images/1381cdc04af51adb944a9087e3089b5231590653.png';
-import mainimg from '../../../assets/images/ef6cc216a9281d36480774a9e6fd429864f1e22b (1).png';
 import leftCircle from '../../../assets/images/right-half-circle.png';
 import rightCircle from '../../../assets/images/left-half-circle.png';
 import logo from '../../../assets/icon/Group.png';
@@ -51,21 +50,7 @@ const Questions = () => {
 
             }}
         >
-            {/* Background Image 1 */}
-            <Box
-                component="img"
-                src={mainimg}
-                alt="background"
-                sx={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    zIndex: 0,
-                }}
-            />
+
 
 
             <Container

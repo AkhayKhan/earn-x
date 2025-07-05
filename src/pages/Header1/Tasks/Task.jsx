@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 
 import { Icon } from '@iconify/react'
 import bgimg from '../../../assets/images/1381cdc04af51adb944a9087e3089b5231590653.png';
-import mainimg from '../../../assets/images/ef6cc216a9281d36480774a9e6fd429864f1e22b (1).png';
 import xbet from '../../../assets/Taskimg/1xbet.png';
 import binance from '../../../assets/Taskimg/binance.png';
 import dream11 from '../../../assets/Taskimg/dream11.png';
@@ -31,21 +30,7 @@ const Task = () => {
                 pb: 12,
             }}
         >
-            {/* Background Image */}
-            <Box
-                component="img"
-                src={mainimg}
-                alt="background"
-                sx={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    zIndex: 0,
-                }}
-            />
+
 
             {/* bgimg behind content */}
             <Box
