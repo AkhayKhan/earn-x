@@ -85,7 +85,7 @@ const MyEarnings = () => {
                 borderRadius: '20px',
                 px: 3,
                 py: 2.5,
-                minHeight: 120,
+                // minHeight: 120,
                 width: '248px',
               }}
             >

@@ -112,7 +112,7 @@ const Questions = () => {
                                     display: 'flex',
                                     flexDirection: 'column',
                                     justifyContent: 'center',
-                                    minHeight: 120,
+                                    // minHeight: 120,
                                 }}
                             >
                                 <CardContent>

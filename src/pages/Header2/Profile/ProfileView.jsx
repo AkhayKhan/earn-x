@@ -72,7 +72,7 @@ const ProfileView = () => {
     <Box
       sx={{
         background: '#060614',
-        minHeight: '100vh',
+        // minHeight: '100vh',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'flex-start',

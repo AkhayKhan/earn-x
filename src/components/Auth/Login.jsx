@@ -91,7 +91,8 @@ const handleSubmit = (e) => {
         <>
             <Box
                 sx={{
-                    minHeight: '100vh',
+                    // minHeight: '100vh',
+                    mt:22,
                     background: '#060614',
                     display: 'flex',
                     justifyContent: 'center',

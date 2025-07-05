@@ -29,7 +29,7 @@ const PrivacyPolicy = () => {
     <Box
       sx={{
         position: 'relative',
-        minHeight: '100vh',
+        // minHeight: '100vh',
         backgroundColor: '#060614',
         py: 8,
         color: '#8C8C9A',

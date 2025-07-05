@@ -25,7 +25,7 @@ const ContactUs = () => {
           backgroundPosition: 'center',
           opacity: 0.7,
           zIndex: -11,
-          minHeight: '100vh',
+          // minHeight: '100vh',
           // background: '#060614',
           display: 'flex',
           justifyContent: 'center',

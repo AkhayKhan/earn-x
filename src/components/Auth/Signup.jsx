@@ -55,7 +55,7 @@ const Signup = () => {
         <>
         <Box
             sx={{
-                minHeight: '100vh',
+                // minHeight: '100vh',
                 background: '#060614',
                 display: 'flex',
                 justifyContent: 'center',
