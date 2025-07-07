@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Layout/Navbar';
 import MainLandingPage from './pages/MainLandingPage';
 import Login from './components/Auth/Login';
@@ -15,18 +15,19 @@ import Footer2 from './components/Layout/Footer2';
 
 function AppContent() {
   const { user } = useAuth();
+  const location = useLocation();
   
   return (
     <>
       <Navbar />
       <Routes>
         <Route path="/" element={<MainLandingPage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/profile" element={<ProfileView />} />
-        <Route path="/refer-earn" element={<ReferralDashboard />} />
-        <Route path="/tasks" element={<Tasks />} />
-        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/login" element={user ? <Navigate to="/tasks" replace /> : <Login />} />
+        <Route path="/signup" element={user ? <Navigate to="/tasks" replace /> : <Signup />} />
+        <Route path="/profile" element={user ? <ProfileView /> : <Navigate to="/login" state={{ from: location }} replace />} />
+        <Route path="/refer-earn" element={user ? <ReferralDashboard /> : <Navigate to="/login" state={{ from: location }} replace />} />
+        <Route path="/tasks" element={user ? <Tasks /> : <Navigate to="/login" state={{ from: location }} replace />} />
+        <Route path="/leaderboard" element={user ? <Leaderboard /> : <Navigate to="/login" state={{ from: location }} replace />} />
         <Route path="/ContactUs" element={<ContactUs />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>

@@ -11,13 +11,21 @@ const Footer2 = () => {
         pt={3}
         borderTop="1px solid rgba(255,255,255,0.1)"
         display="flex"
+        flexDirection={{ xs: 'column', sm: 'row' }}
         justifyContent="space-between"
         alignItems="center"
         flexWrap="wrap"
-        px={25}
+        px={{ xs: 2, sm: 4, md: 8, lg: 25 }}
+        textAlign={{ xs: 'center', sm: 'left' }}
+        gap={2}
       >
         {/* Left Links */}
-        <Box display="flex" gap={2} flexWrap="wrap">
+        <Box
+          display="flex"
+          justifyContent={{ xs: 'center', sm: 'flex-start' }}
+          flexWrap="wrap"
+          gap={2}
+        >
           {['EarnX', 'Terms of Conditions', 'Privacy Policy', 'Contact Us', 'FAQ'].map((text, index) => (
             <Link
               key={index}
@@ -44,9 +52,13 @@ const Footer2 = () => {
           ))}
         </Box>
 
-
         {/* Right Social Icons */}
-        <Box display="flex" gap={2} mt={{ xs: 2, sm: 0 }}>
+        <Box
+          display="flex"
+          justifyContent={{ xs: 'center', sm: 'flex-end' }}
+          gap={2}
+          mt={{ xs: 2, sm: 0 }}
+        >
           <IconButton sx={iconStyle}>
             <Icon icon="mdi:instagram" />
           </IconButton>
@@ -66,7 +78,13 @@ const Footer2 = () => {
       </Box>
 
       {/* Copyright */}
-      <Typography variant="body2" color="gray" align="center" >
+      <Typography
+        variant="body2"
+        color="gray"
+        align="center"
+        mt={3}
+        px={{ xs: 2, sm: 0 }}
+      >
         © 2025-26 EarnX. All Rights Reserved.
       </Typography>
     </Box>

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useEffect } from 'react';
-
 import {
   AppBar,
   Box,
@@ -17,6 +16,7 @@ import {
   MenuItem
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/images/logo-skin-6.png';
 import { motion, LayoutGroup } from 'framer-motion';
@@ -35,21 +35,20 @@ const userSections = [
   { id: 'user-tasks', name: 'Tasks', path: '/tasks' },
   { id: 'refer-earn', name: 'Refer & Earn', path: '/refer-earn' },
   { id: 'leaderboard', name: 'Leaderboard', path: '/leaderboard' },
-  { id: 'support', name: 'Support', path: '/support' },
+  { id: 'support', name: 'Support', path: '/ContactUs' },
 ];
 
 function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
   const [openDrawer, setOpenDrawer] = React.useState(false);
-  const isHomePage = location.pathname === '/';
   const { user, logout } = useAuth();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
   const sections = user ? userSections : guestSections;
   const [activeSection, setActiveSection] = React.useState(
-    user ? 'tasks' : 'home'
+    user ? 'user-tasks' : 'home'
   );
 
   const toggleDrawer = (open) => () => {
@@ -60,7 +59,7 @@ function Navbar() {
     if (user) {
       if (location.pathname === '/') {
         navigate('/tasks', { replace: true });
-        setActiveSection('tasks');
+        setActiveSection('user-tasks');
       } else {
         const currentSection = userSections.find(
           section => section.path === location.pathname
@@ -69,33 +68,31 @@ function Navbar() {
           setActiveSection(currentSection.id);
         }
       }
+    } else {
+      const currentSection = guestSections.find(
+        section => section.path === location.pathname || 
+                 (section.path.includes('#') && location.pathname === '/')
+      );
+      if (currentSection) {
+        setActiveSection(currentSection.id);
+      }
     }
   }, [user, location.pathname, navigate]);
 
   const handleNavClick = (section) => {
     setActiveSection(section.id);
     if (section.path.startsWith('/')) {
-      const element = document.getElementById(section.id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+      if (section.path.includes('#')) {
+        const elementId = section.path.split('#')[1];
+        const element = document.getElementById(elementId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        navigate(section.path);
       }
-      navigate(section.path, { replace: true });
-    } else {
-      navigate(section.path);
     }
     setOpenDrawer(false);
-  };
-
-  const drawerVariants = {
-    hidden: { x: '-100%' },
-    visible: {
-      x: 0,
-      transition: {
-        type: 'spring',
-        stiffness: 260,
-        damping: 20,
-      },
-    },
   };
 
   const handleMenuOpen = (event) => setAnchorEl(event.currentTarget);
@@ -182,11 +179,11 @@ function Navbar() {
             </LayoutGroup>
 
             {/* Desktop Auth Buttons */}
-            <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' }, gap: '12px' }}>
+            <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' }, gap: '12px', alignItems: 'center' }}>
               {user ? (
                 <>
                   <IconButton
-                    onClick={() => navigate('/profile')}
+                    onClick={handleMenuOpen}
                     sx={{ p: 0 }}
                   >
                     <Avatar
@@ -195,6 +192,31 @@ function Navbar() {
                       sx={{ width: 40, height: 40 }}
                     />
                   </IconButton>
+                  <Menu
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleMenuClose}
+                    MenuListProps={{
+                      sx: {
+                        backgroundColor: '#1F1F2E',
+                        color: 'white',
+                        border: '1px solid rgba(255,255,255,0.1)',
+                      }
+                    }}
+                  >
+                    <MenuItem onClick={() => {
+                      handleMenuClose();
+                      navigate('/profile');
+                    }}>Profile</MenuItem>
+                    <MenuItem onClick={() => {
+                      handleMenuClose();
+                      logout();
+                      navigate('/');
+                    }}>
+                      <LogoutIcon sx={{ mr: 1, fontSize: 20 }} /> 
+                      Logout
+                    </MenuItem>
+                  </Menu>
                 </>
               ) : (
                 <>
@@ -240,66 +262,59 @@ function Navbar() {
         onClose={toggleDrawer(false)}
         PaperProps={{ sx: { backgroundColor: '#060614', width: 250 } }}
       >
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          variants={drawerVariants}
-          style={{ height: '100%', paddingTop: 24 }}
-        >
-          <List>
-            {sections.map((section) => {
-              const isActive = activeSection === section.id;
-              return (
-                <ListItem
-                  button
-                  key={section.id}
-                  onClick={() => handleNavClick(section)}
+        <List>
+          {sections.map((section) => {
+            const isActive = activeSection === section.id;
+            return (
+              <ListItem
+                button
+                key={section.id}
+                onClick={() => handleNavClick(section)}
+                sx={{
+                  backgroundColor: isActive ? '#1F1F2E' : 'transparent',
+                  borderLeft: isActive ? '4px solid #7C39F6' : '4px solid transparent',
+                  pl: 2,
+                }}
+              >
+                <ListItemText
+                  primary={section.name}
                   sx={{
-                    backgroundColor: isActive ? '#1F1F2E' : 'transparent',
-                    borderLeft: isActive ? '4px solid #7C39F6' : '4px solid transparent',
-                    pl: 2,
+                    color: isActive ? '#7C39F6' : 'white',
+                    fontWeight: isActive ? 'bold' : 'normal',
                   }}
-                >
-                  <ListItemText
-                    primary={section.name}
-                    sx={{
-                      color: isActive ? '#7C39F6' : 'white',
-                      fontWeight: isActive ? 'bold' : 'normal',
-                    }}
-                  />
-                </ListItem>
-              );
-            })}
-            {user ? (
-              <>
-                <ListItem
-                  button
-                  component={RouterLink}
-                  to="/profile" 
-                  onClick={toggleDrawer(false)}
-                >
-                  <ListItemText primary="My Profile" sx={{ color: 'white' }} />
-                </ListItem>
-                <ListItem button onClick={() => {
-                  toggleDrawer(false)();
-                  logout();
-                }}>
-                  <ListItemText primary="Logout" sx={{ color: 'white' }} />
-                </ListItem>
-              </>
-            ) : (
-              <>
-                <ListItem button component={RouterLink} to="/login" onClick={toggleDrawer(false)}>
-                  <ListItemText primary="Login" sx={{ color: 'white' }} />
-                </ListItem>
-                <ListItem button component={RouterLink} to="/signup" onClick={toggleDrawer(false)}>
-                  <ListItemText primary="Sign up" sx={{ color: 'white' }} />
-                </ListItem>
-              </>
-            )}
-          </List>
-        </motion.div>
+                />
+              </ListItem>
+            );
+          })}
+          {user ? (
+            <>
+              <ListItem
+                button
+                component={RouterLink}
+                to="/profile" 
+                onClick={toggleDrawer(false)}
+              >
+                <ListItemText primary="My Profile" sx={{ color: 'white' }} />
+              </ListItem>
+              <ListItem button onClick={() => {
+                toggleDrawer(false)();
+                logout();
+                navigate('/');
+              }}>
+                <ListItemText primary="Logout" sx={{ color: 'white' }} />
+              </ListItem>
+            </>
+          ) : (
+            <>
+              <ListItem button component={RouterLink} to="/login" onClick={toggleDrawer(false)}>
+                <ListItemText primary="Login" sx={{ color: 'white' }} />
+              </ListItem>
+              <ListItem button component={RouterLink} to="/signup" onClick={toggleDrawer(false)}>
+                <ListItemText primary="Sign up" sx={{ color: 'white' }} />
+              </ListItem>
+            </>
+          )}
+        </List>
       </Drawer>
     </>
   );
