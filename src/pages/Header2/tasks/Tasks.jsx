@@ -75,6 +75,7 @@ const Tasks = () => {
                     flexDirection: 'column',
                     justifyContent: 'space-between',
                     p: isMobile ? 1.5 : 2,
+                    
                 }}
             >
                 <CardMedia

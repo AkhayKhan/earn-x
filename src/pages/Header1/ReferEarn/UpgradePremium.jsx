@@ -15,6 +15,7 @@ const UpgradePremium = () => {
                 overflow: 'hidden',
                 background: '#060614',
                 pb: 12,
+                
             }}
         >
 
@@ -43,6 +44,7 @@ const UpgradePremium = () => {
                     color: 'white',
                     pt: 8,
                     maxWidth: 'lg',
+                    mt: 5
                 }}
             >
                 <Typography variant="h1" sx={{ fontWeight: 'bold', fontSize: { xs: '2rem', md: '3rem' }, mb: 2 }}>

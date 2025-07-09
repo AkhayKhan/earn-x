@@ -32,6 +32,7 @@ const ContactUs = () => {
           alignItems: 'center',
           px: 2,
           pt: 10,
+          mt:12
         }}
       >
         <Box

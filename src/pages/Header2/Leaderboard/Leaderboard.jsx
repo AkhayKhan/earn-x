@@ -42,6 +42,7 @@ const Leaderboard = () => {
         borderRadius: '20px',
         background: 'linear-gradient(180deg, rgba(255,255,255,0.04), rgba(153,153,153,0.04))',
         boxShadow: 'inset 0px 3px 6px #FFFFFF14, inset 0px -3px 6px #FFFFFF14',
+        mt:20
       }}
     >
       {/* Header */}

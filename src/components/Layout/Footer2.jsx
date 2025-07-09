@@ -35,7 +35,9 @@ const Footer2 = () => {
                   ? '/ContactUs'
                   : text === 'Privacy Policy'
                     ? '/privacy-policy'
-                    : '#'
+                    : text === 'Terms of Conditions'
+                      ? '/terms-conditions'
+                      : '#'
               }
               underline="hover"
               color="gray"

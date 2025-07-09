@@ -61,6 +61,7 @@ const Questions = () => {
                     color: 'white',
                     pt: 8,
                     maxWidth: 'lg',
+                    mt: 12
                 }}
             >
                 <Box
@@ -116,10 +117,10 @@ const Questions = () => {
                                 }}
                             >
                                 <CardContent>
-                                    <Typography variant="h6" gutterBottom sx={{ textAlign: 'left',color:'#fff' }}>
+                                    <Typography variant="h6" gutterBottom sx={{ textAlign: 'left', color: '#fff' }}>
                                         Still have a questions?
                                     </Typography>
-                                    <Typography variant="body2" sx={{ opacity: 0.7, mb: 3, textAlign: 'left' ,color:'#fff'}}>
+                                    <Typography variant="body2" sx={{ opacity: 0.7, mb: 3, textAlign: 'left', color: '#fff' }}>
                                         We’re here to help. If you need more info about tasks, withdrawals, or anything else — just reach out!
                                     </Typography>
 

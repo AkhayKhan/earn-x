@@ -13,6 +13,7 @@ import {
   useMediaQuery,
   useTheme,
 } from '@mui/material';
+
 import MyProfile from './MyProfile/MyProfile';
 import MyEarnings from './MyEarnings/MyEarnings';
 import MyTaskHistory from './MyTaskHistory/MyTaskHistory';
@@ -37,21 +38,12 @@ const ProfileView = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-  const handleLogoutClick = () => {
-    setOpenLogoutModal(true);
-  };
-
-  const handleCloseLogoutModal = () => {
-    setOpenLogoutModal(false);
-  };
-
-  const handleConfirmLogout = () => {
+  const handleLogout = () => {
     logout();
-    navigate('/login');
-    setOpenLogoutModal(false);
+    navigate('/');
   };
 
-  const renderTabContent = () => {
+  const renderContent = () => {
     switch (selectedTab) {
       case 'My Profile':
         return <MyProfile />;
@@ -71,14 +63,14 @@ const ProfileView = () => {
   return (
     <Box
       sx={{
-        background: '#060614',
-        // minHeight: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'flex-start',
+        backgroundColor: '#060614',
         pt: { xs: '70px', md: '80px' },
         pb: 4,
-        mt: 4,
+        mt: 5,
+        display: 'flex',
+        justifyContent: 'center',
+        minHeight: '100vh',
+        overflow: 'hidden', 
       }}
     >
       <Box
@@ -87,28 +79,23 @@ const ProfileView = () => {
           maxWidth: 1300,
           display: 'flex',
           flexDirection: { xs: 'column', md: 'row' },
-          // minHeight: 'calc(100vh - 120px)',
-          overflow: 'hidden',
-          color: 'white',
-          border: '1px solid rgba(255, 255, 255, 0.3)',
           borderRadius: '30px',
-          background: `linear-gradient(180deg, rgba(255,255,255,0.04), rgba(153,153,153,0.04))`,
+          overflow: 'hidden',
+          border: '1px solid rgba(255,255,255,0.3)',
+          background: 'linear-gradient(180deg, rgba(255,255,255,0.04), rgba(153,153,153,0.04))',
+          color: 'white',
         }}
       >
         {/* Sidebar */}
         <Box
           sx={{
-            width: { xs: '95%', md: '250px' },
-            display: 'flex',
-            margin:'auto',
-            p:2,
-            flexDirection: 'column',
-            justifyContent: 'space-between',
+            width: { xs: '90%', md: '250px' },
             borderRight: { md: '1px solid #FFFFFF1A' },
             borderBottom: { xs: '1px solid #FFFFFF1A', md: 'none' },
+            p: 2,
           }}
         >
-          <List sx={{ flexGrow: 1, }}>
+          <List>
             {sidebarItems.map((item) => (
               <ListItem key={item} disablePadding>
                 <ListItemButton
@@ -116,11 +103,9 @@ const ProfileView = () => {
                   sx={{
                     backgroundColor: selectedTab === item ? '#7C39F633' : 'transparent',
                     color: selectedTab === item ? '#7C39F6' : '#fff',
-                    textTransform: 'none',
-                    fontSize: '0.9rem',
-                    padding: '10px 16px',
                     borderRadius: '30px',
                     mb: 1,
+                    px: 2,
                     '&:hover': {
                       backgroundColor: '#7C39F633',
                     },
@@ -134,20 +119,17 @@ const ProfileView = () => {
 
           <Button
             variant="contained"
+            fullWidth
+            onClick={() => setOpenLogoutModal(true)}
             sx={{
+              mt: 2,
               backgroundColor: '#E7001F',
-              color: 'white',
-              textTransform: 'none',
-              fontSize: '0.9rem',
-              padding: '10px 16px',
               borderRadius: '30px',
-              mt: isMobile ? 1 : 0,
+              textTransform: 'none',
               '&:hover': {
                 backgroundColor: '#FF0000',
               },
             }}
-            fullWidth
-            onClick={handleLogoutClick}
           >
             Logout
           </Button>
@@ -157,19 +139,18 @@ const ProfileView = () => {
         <Box
           sx={{
             flex: 1,
-            overflowY: 'auto',
-            p: { xs: 1, md: 3 },
-            maxHeight: 'calc(100vh - 160px)',
+            p: { xs: 2, md: 3 },
+            overflow: 'hidden',
           }}
         >
-          {renderTabContent()}
+          {renderContent()}
         </Box>
       </Box>
 
       {/* Logout Confirmation Modal */}
       <Dialog
         open={openLogoutModal}
-        onClose={handleCloseLogoutModal}
+        onClose={() => setOpenLogoutModal(false)}
         PaperProps={{
           sx: {
             backgroundColor: '#161827',
@@ -179,36 +160,35 @@ const ProfileView = () => {
           },
         }}
       >
-        <DialogTitle sx={{ textAlign: 'center', fontSize: '1.5rem', fontWeight: 600 }}>
+        <DialogTitle sx={{ textAlign: 'center', fontWeight: 600 }}>
           Log Out
         </DialogTitle>
-        <DialogContent sx={{ textAlign: 'center', py: 2 }}>
+        <DialogContent sx={{ textAlign: 'center' }}>
           Are you sure you want to Log Out?
         </DialogContent>
-        <DialogActions sx={{ justifyContent: 'center', gap: 2, px: 3, pb: 3 }}>
+        <DialogActions sx={{ justifyContent: 'center', gap: 2, pb: 2 }}>
           <Button
-            onClick={handleCloseLogoutModal}
+            onClick={() => setOpenLogoutModal(false)}
             variant="outlined"
             sx={{
-              color: 'white',
-              textTransform: 'none',
-              borderColor: 'rgba(255, 255, 255, 0.3)',
+              borderColor: 'rgba(255,255,255,0.3)',
+              color: '#fff',
               borderRadius: '30px',
+              textTransform: 'none',
               '&:hover': {
-                backgroundColor: 'rgba(255,255,255,0.08)',
+                backgroundColor: 'rgba(255,255,255,0.1)',
               },
             }}
           >
             Cancel
           </Button>
           <Button
-            onClick={handleConfirmLogout}
+            onClick={handleLogout}
             variant="contained"
             sx={{
               backgroundColor: '#E7001F',
-              color: 'white',
-              textTransform: 'none',
               borderRadius: '30px',
+              textTransform: 'none',
               '&:hover': {
                 backgroundColor: '#FF0000',
               },

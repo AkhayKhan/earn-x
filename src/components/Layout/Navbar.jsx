@@ -24,11 +24,11 @@ import { useAuth } from '../../pages/context/AuthContext';
 
 const guestSections = [
   { id: 'home', name: 'Home', path: '/' },
-  { id: 'tasks', name: 'Tasks', path: '/#tasks' },
-  { id: 'benefits', name: 'Benefits', path: '/#benefits' },
-  { id: 'refer-earn', name: 'Refer & Earn', path: '/#refer-earn' },
-  { id: 'testimonials', name: 'Testimonials', path: '/#testimonials' },
-  { id: 'faq', name: 'FAQ', path: '/#faq' },
+  { id: 'tasks', name: 'Tasks', path: '/user-tasks' },
+  { id: 'benefits', name: 'Benefits', path: '/user-benefits' },
+  { id: 'refer-earn', name: 'Refer & Earn', path: '/user-refer-earn' },
+  { id: 'testimonials', name: 'Testimonials', path: '/user-testimonials' },
+  { id: 'faq', name: 'FAQ', path: '/user-faq' },
 ];
 
 const userSections = [
@@ -183,35 +183,16 @@ function Navbar() {
               {user ? (
                 <>
                   <IconButton
-                    onClick={handleMenuOpen}
+                    onClick={() => navigate('/profile')}
                     sx={{ p: 0 }}
-
                   >
                     <Avatar
-
                       src={user.avatar}
                       alt={user.name}
                       sx={{ width: 40, height: 40 }}
                     />
                   </IconButton>
-                  <Menu
-                    anchorEl={anchorEl}
-                    open={open}
-                    onClose={handleMenuClose}
-                    MenuListProps={{
-                      sx: {
-                        backgroundColor: '#1F1F2E',
-                        color: 'white',
-                        border: '1px solid rgba(255,255,255,0.1)',
-                      }
-                    }}
-                  >
-                    <MenuItem onClick={() => {
-                      handleMenuClose();
-                      navigate('/profile');
-                    }}>My Profile</MenuItem>
 
-                  </Menu>
                 </>
               ) : (
                 <>
@@ -291,7 +272,7 @@ function Navbar() {
               >
                 <ListItemText primary="My Profile" sx={{ color: 'white' }} />
               </ListItem>
-      
+
             </>
           ) : (
             <>

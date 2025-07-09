@@ -28,21 +28,6 @@ const MainLandingPage = () => {
       <Box id="home">
         <EarningsCard />
       </Box>
-      <Box id="tasks">
-        <Task />
-      </Box>
-      <Box id="benefits">
-        <Benefits />
-      </Box>
-      <Box id="refer-earn">
-        <UpgradePremium />
-      </Box>
-      <Box id="testimonials">
-        <Testimonials />
-      </Box>
-      <Box id="faq">
-        <Questions />
-      </Box>
     </>
   );
 };

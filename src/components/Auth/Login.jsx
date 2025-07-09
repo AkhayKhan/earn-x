@@ -96,19 +96,19 @@ const Login = () => {
   return (
     <Box
       sx={{
-        minHeight: 'calc(80vh - 64px)',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         background: '#060614',
         p: 2,
+        mt:12
       }}
     >
       <Box
         component="form"
         onSubmit={handleSubmit}
         sx={{
-          maxWidth: 450,
+          maxWidth: 400,
           width: '100%',
           p: 4,
           borderRadius: '16px',
