@@ -26,7 +26,6 @@ const EarningsCard = () => {
                     boxShadow: 1,
                     background: '#060614',
                     pb: 12,
-                    // mt: 10
                 }}
             >
 
@@ -58,7 +57,7 @@ const EarningsCard = () => {
                         alignItems: 'center',
                         textAlign: 'center',
                         color: 'white',
-                        mt: 5
+                        mt: 10
                     }}
                 >
                     {/* Heading Section */}
