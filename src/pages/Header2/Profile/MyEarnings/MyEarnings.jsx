@@ -84,9 +84,12 @@ const MyEarnings = () => {
                 boxShadow: '0px -3px 6px 0px #FFFFFF14 inset, 0px 3px 6px 0px #FFFFFF14 inset',
                 borderRadius: '20px',
                 px: 3,
-                py: 2.5,
-                // minHeight: 120,
-                width: '248px',
+                py: 3,
+                width: {
+                  xs: '320px',  
+                  sm: '100%',
+                  md: '248px',  
+                },
               }}
             >
               <Box sx={{ mb: 1 }}>
@@ -108,6 +111,7 @@ const MyEarnings = () => {
               <Typography sx={{ color: '#aaa', fontSize: 14 }}>{item.label}</Typography>
               <Typography sx={{ color: '#fff', fontSize: 24, fontWeight: 600 }}>{item.value}</Typography>
             </Card>
+
           </Grid>
         ))}
       </Grid>

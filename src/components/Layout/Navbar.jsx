@@ -70,8 +70,8 @@ function Navbar() {
       }
     } else {
       const currentSection = guestSections.find(
-        section => section.path === location.pathname || 
-                 (section.path.includes('#') && location.pathname === '/')
+        section => section.path === location.pathname ||
+          (section.path.includes('#') && location.pathname === '/')
       );
       if (currentSection) {
         setActiveSection(currentSection.id);
@@ -101,7 +101,7 @@ function Navbar() {
   return (
     <>
       <AppBar position="fixed" sx={{ backgroundColor: '#060614' }}>
-        <Container maxWidth="lg" sx={{ padding: '14px 0px' }}>
+        <Container maxWidth="lg">
           <Toolbar disableGutters>
             {/* Desktop Logo */}
             <Box sx={{ display: { xs: 'none', md: 'flex' }, mr: 2 }}>
@@ -185,8 +185,10 @@ function Navbar() {
                   <IconButton
                     onClick={handleMenuOpen}
                     sx={{ p: 0 }}
+
                   >
                     <Avatar
+
                       src={user.avatar}
                       alt={user.name}
                       sx={{ width: 40, height: 40 }}
@@ -207,15 +209,8 @@ function Navbar() {
                     <MenuItem onClick={() => {
                       handleMenuClose();
                       navigate('/profile');
-                    }}>Profile</MenuItem>
-                    <MenuItem onClick={() => {
-                      handleMenuClose();
-                      logout();
-                      navigate('/');
-                    }}>
-                      <LogoutIcon sx={{ mr: 1, fontSize: 20 }} /> 
-                      Logout
-                    </MenuItem>
+                    }}>My Profile</MenuItem>
+
                   </Menu>
                 </>
               ) : (
@@ -291,18 +286,12 @@ function Navbar() {
               <ListItem
                 button
                 component={RouterLink}
-                to="/profile" 
+                to="/profile"
                 onClick={toggleDrawer(false)}
               >
                 <ListItemText primary="My Profile" sx={{ color: 'white' }} />
               </ListItem>
-              <ListItem button onClick={() => {
-                toggleDrawer(false)();
-                logout();
-                navigate('/');
-              }}>
-                <ListItemText primary="Logout" sx={{ color: 'white' }} />
-              </ListItem>
+      
             </>
           ) : (
             <>

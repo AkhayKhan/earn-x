@@ -137,7 +137,7 @@ const BonusCodes = () => {
       <Box
         component={Paper}
         sx={{
-          backgroundColor: '#1A1A1F',
+          background: `linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(153, 153, 153, 0))`,
           borderRadius: '12px',
           border: '1px solid #2A2A36',
           overflow: 'hidden',

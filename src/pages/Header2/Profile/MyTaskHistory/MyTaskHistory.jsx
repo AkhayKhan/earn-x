@@ -82,13 +82,13 @@ export default function TodaysTask() {
   };
 
   return (
-    <Box sx={{ p: 4 }}>
+    <Box sx={{ p: { xs: 1, sm: 4 } }}>
       <Typography variant="h5" sx={{ color: '#fff', mb: 4 }}>
         Today's Task
       </Typography>
 
-      {/* Bounded Scrollable Cards */}
-      <Box sx={{ overflow: 'hidden', width: '100%', mb: 4 }} ref={scrollRef}>
+      {/* Scrollable Task Cards */}
+      <Box sx={{ overflow: 'hidden', width: '100%', mb: 4, }} ref={scrollRef}>
         <motion.div
           ref={dragRef}
           drag="x"
@@ -106,7 +106,7 @@ export default function TodaysTask() {
             <motion.div key={task.id} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}>
               <Card
                 sx={{
-                  width: 300,
+                  width: { xs: '70vw', sm: 300 },
                   flexShrink: 0,
                   p: 2.5,
                   borderRadius: '16px',
@@ -156,7 +156,7 @@ export default function TodaysTask() {
         All Task History
       </Typography>
 
-      <Box sx={{ display: 'flex', gap: 1, mb: 3, flexWrap: 'wrap' }}>
+      <Box sx={{ display: 'flex', gap: 1.5, mb: 3, flexWrap: 'wrap' }}>
         <Button variant="outlined" sx={{ color: '#B0B0C3', borderColor: '#aaa', borderRadius: '12px' }}>
           This Month
         </Button>
@@ -216,8 +216,8 @@ export default function TodaysTask() {
       </Box>
 
       {/* Task History Table */}
-      <Box sx={{ border: '2px solid #FFFFFF14', borderRadius: '14px', overflow: 'hidden' }}>
-        <Table sx={{ minWidth: '100%', tableLayout: 'fixed' }}>
+      <Box sx={{ border: '2px solid #FFFFFF14', borderRadius: '14px', overflowX: 'auto' }}>
+        <Table sx={{ minWidth: 700, tableLayout: 'auto' }}>
           <TableHead>
             <TableRow>
               {['Task ID', 'Task Name', 'Type', 'Amount', 'Status', 'Date'].map((head) => (

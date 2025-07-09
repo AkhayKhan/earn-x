@@ -17,8 +17,7 @@ import {
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import Boxicon from '../../../../assets/icon/SVG.png';
-import AddBankAccountModal from './AddBankAccountModal'
-
+import AddBankAccountModal from './AddBankAccountModal';
 
 const transactions = new Array(10).fill(null).map((_, i) => ({
   id: `TXN${i + 1}ABC${Math.floor(Math.random() * 1000)}`,
@@ -42,7 +41,7 @@ const WithdrawRequest = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [amount, setAmount] = useState('');
-const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   const handleChangePage = (_, newPage) => setPage(newPage);
   const handleChangeRowsPerPage = (e) => {
@@ -51,18 +50,16 @@ const [openModal, setOpenModal] = useState(false);
   };
 
   return (
-    <Box sx={{ display: 'flex', gap: 4, p: 3, color: '#fff', flexWrap: 'wrap' }}>
-      {/* Left Panel (unchanged) */}
-      <Box sx={{ width: 300 }}>
+    <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, p: 3, color: '#fff', flexWrap: 'wrap' }}>
+      {/* Left Panel */}
+      <Box sx={{ width: { xs: '100%', sm: 300 } }}>
         <Card
           sx={{
             p: 3,
             borderRadius: '32px',
             border: '1px solid #DBFF7333',
-            background:
-              'radial-gradient(85% 107.37% at 100% 100%, rgba(219, 255, 115, 0.1) 0%, rgba(219, 255, 115, 0) 100%)',
+            background: 'radial-gradient(85% 107.37% at 100% 100%, rgba(219, 255, 115, 0.1) 0%, rgba(219, 255, 115, 0) 100%)',
           }}
-
         >
           <Box
             component="img"
@@ -77,7 +74,6 @@ const [openModal, setOpenModal] = useState(false);
               background: `linear-gradient(180deg, rgba(255,255,255,0.04), rgba(153,153,153,0.04))`,
               boxShadow: `inset 0 2.91px 8px #FFFFFF14, inset 0 -2.91px 8px #FFFFFF14`,
               mb: 2,
-
             }}
           />
           <Typography variant="body2" sx={{ color: '#B0B0C3', mb: 1 }}>
@@ -156,7 +152,7 @@ const [openModal, setOpenModal] = useState(false);
         </Box>
       </Box>
 
-      {/* Right Panel - Updated Table Design */}
+      {/* Right Panel */}
       <Box sx={{ flex: 1 }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2, flexWrap: 'wrap' }}>
           <Typography variant="h6">All Withdraw</Typography>
@@ -183,9 +179,7 @@ const [openModal, setOpenModal] = useState(false);
               color: '#fff',
               border: '1px solid #aaa',
               borderRadius: 2,
-              '& .MuiSelect-select': {
-                py: 0.8,
-              }
+              '& .MuiSelect-select': { py: 0.8 },
             }}
           >
             <MenuItem value="All">All</MenuItem>
@@ -205,7 +199,7 @@ const [openModal, setOpenModal] = useState(false);
                       color: '#aaa',
                       borderBottom: '2px solid #FFFFFF14',
                       fontWeight: 500,
-                      fontSize: '0.875rem'
+                      fontSize: '0.875rem',
                     }}
                   >
                     {head}
@@ -214,31 +208,29 @@ const [openModal, setOpenModal] = useState(false);
               </TableRow>
             </TableHead>
             <TableBody>
-              {transactions
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((txn, idx) => (
-                  <TableRow key={idx} sx={{ '&:hover': { backgroundColor: '#1C1C2B' } }}>
-                    <TableCell sx={{ color: '#fff', border: 'none', fontSize: '0.875rem' }}>{txn.id}</TableCell>
-                    <TableCell sx={{ color: '#fff', border: 'none', fontSize: '0.875rem' }}>{txn.amount}</TableCell>
-                    <TableCell sx={{ border: 'none' }}>
-                      <Box
-                        sx={{
-                          backgroundColor: getStatusColor(txn.status) + '33',
-                          color: getStatusColor(txn.status),
-                          px: 2,
-                          py: 0.5,
-                          borderRadius: 3,
-                          display: 'inline-block',
-                          fontSize: '0.75rem',
-                          fontWeight: 500,
-                        }}
-                      >
-                        {txn.status}
-                      </Box>
-                    </TableCell>
-                    <TableCell sx={{ color: '#fff', border: 'none', fontSize: '0.875rem' }}>{txn.date}</TableCell>
-                  </TableRow>
-                ))}
+              {transactions.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((txn, idx) => (
+                <TableRow key={idx} sx={{ '&:hover': { backgroundColor: '#1C1C2B' } }}>
+                  <TableCell sx={{ color: '#fff', border: 'none', fontSize: '0.875rem' }}>{txn.id}</TableCell>
+                  <TableCell sx={{ color: '#fff', border: 'none', fontSize: '0.875rem' }}>{txn.amount}</TableCell>
+                  <TableCell sx={{ border: 'none' }}>
+                    <Box
+                      sx={{
+                        backgroundColor: getStatusColor(txn.status) + '33',
+                        color: getStatusColor(txn.status),
+                        px: 2,
+                        py: 0.5,
+                        borderRadius: 3,
+                        display: 'inline-block',
+                        fontSize: '0.75rem',
+                        fontWeight: 500,
+                      }}
+                    >
+                      {txn.status}
+                    </Box>
+                  </TableCell>
+                  <TableCell sx={{ color: '#fff', border: 'none', fontSize: '0.875rem' }}>{txn.date}</TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
 
@@ -255,19 +247,21 @@ const [openModal, setOpenModal] = useState(false);
               borderTop: '2px solid #FFFFFF14',
               '& .MuiTablePagination-selectLabel, .MuiTablePagination-displayedRows': {
                 color: '#aaa',
-                fontSize: '0.875rem'
+                fontSize: '0.875rem',
               },
               '& .MuiInputBase-root': {
                 color: '#aaa',
-                fontSize: '0.875rem'
+                fontSize: '0.875rem',
               },
               '& svg': {
-                fill: '#aaa'
+                fill: '#aaa',
               },
             }}
           />
         </Box>
       </Box>
+
+      {/* Modal */}
       <AddBankAccountModal
         open={openModal}
         onClose={() => setOpenModal(false)}

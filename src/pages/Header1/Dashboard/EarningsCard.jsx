@@ -1,10 +1,16 @@
 // src/components/Dashboard/EarningsCard.jsx
+import { useNavigate } from 'react-router-dom';
+
 import { Box, Typography, Button, Container, Stack, Paper } from '@mui/material';
 import Marquee from "react-fast-marquee";
 
 import bgimg from '../../../assets/images/1381cdc04af51adb944a9087e3089b5231590653.png';
 
+
+
+
 const EarningsCard = () => {
+    const navigate = useNavigate();
     return (
         <Box
             sx={{
@@ -17,7 +23,7 @@ const EarningsCard = () => {
                 mt: 10
             }}
         >
- 
+
 
             {/* bgimg behind content */}
             <Box
@@ -74,6 +80,8 @@ const EarningsCard = () => {
                     mb: 8
                 }}>
                     <Button
+                        onClick={() => navigate('/login')}
+
                         sx={{
                             backgroundColor: '#7C39F6',
                             color: 'white',
@@ -91,6 +99,8 @@ const EarningsCard = () => {
                         Start Earning Free
                     </Button>
                     <Button
+                        onClick={() => navigate('/login')}
+
                         sx={{
                             color: 'white',
                             textTransform: 'none',

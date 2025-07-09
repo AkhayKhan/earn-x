@@ -36,7 +36,7 @@ const ReferralDashboard = () => {
       sx={{
         backgroundColor: '#060614',
         color: '#fff',
-        p: 4,
+        p: 1,
         borderRadius: '16px',
         maxWidth: 1000,
         mx: 'auto',
@@ -66,7 +66,7 @@ const ReferralDashboard = () => {
           color: 'white',
           textTransform: 'none',
           fontSize: '1rem',
-          padding: '45px',
+          padding: '25px',
           border: '1px solid rgba(255, 255, 255, 0.3)',
           borderRadius: '20px',
           background: `linear-gradient(180deg, rgba(255,255,255,0.04), rgba(153,153,153,0.04))`,

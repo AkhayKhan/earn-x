@@ -30,7 +30,7 @@ const referralData = [
 
 // Reusable card style
 const cardStyle = {
-  p: 3,
+  p: 2,
   background: `radial-gradient(85% 107.37% at 100% 100%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%)`,
   border: '1px solid #FFFFFF33',
   borderRadius: '12px',
@@ -63,10 +63,10 @@ const Referrals = () => {
         You’ll get your reward once they complete their first task.
       </Typography>
 
-      <Grid container spacing={2} mb={4}>
+      <Grid container spacing={1} mb={4}>
         {/* Referral Code */}
         <Grid item xs={12} sm={4}>
-          <Paper sx={{ ...cardStyle, display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '350px' }}>
+          <Paper sx={{ ...cardStyle, display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '250px' }}>
             <Box>
               <Typography color="#aaa" variant="body2" mb={0.5}>
                 Your Referral code
@@ -172,50 +172,57 @@ const Referrals = () => {
       </Box>
 
       {/* Table */}
-      <Box sx={{ border: '2px solid #FFFFFF14', borderRadius: '14px', overflow: 'hidden' }}>
-        <Table sx={{ minWidth: '100%', tableLayout: 'fixed' }}>
-          <TableHead>
-            <TableRow>
-              <TableCell sx={{ color: '#888', borderBottom: '2px solid #FFFFFF14' }}>Friend Name</TableCell>
-              <TableCell sx={{ color: '#888', borderBottom: '2px solid #FFFFFF14' }}>Status</TableCell>
-              <TableCell sx={{ color: '#888', borderBottom: '2px solid #FFFFFF14' }}>Your Reward</TableCell>
-              <TableCell sx={{ color: '#888', borderBottom: '2px solid #FFFFFF14' }}>Date</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {referralData.map((item, index) => {
-              const getStatusColor = (status) => {
-                if (status === 'Completed') return '#1E9C6D';
-                if (status === 'Signed Up Only') return '#F29D38';
-                return '#aaa';
-              };
+    <Box
+  sx={{
+    border: '2px solid #FFFFFF14',
+    borderRadius: '14px',
+    overflowX: 'auto',
+  }}
+>
+  <Table sx={{ minWidth: 600, tableLayout: 'fixed' }}>
+    <TableHead>
+      <TableRow>
+        <TableCell sx={{ color: '#888', borderBottom: '2px solid #FFFFFF14' }}>Friend Name</TableCell>
+        <TableCell sx={{ color: '#888', borderBottom: '2px solid #FFFFFF14' }}>Status</TableCell>
+        <TableCell sx={{ color: '#888', borderBottom: '2px solid #FFFFFF14' }}>Your Reward</TableCell>
+        <TableCell sx={{ color: '#888', borderBottom: '2px solid #FFFFFF14' }}>Date</TableCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {referralData.map((item, index) => {
+        const getStatusColor = (status) => {
+          if (status === 'Completed') return '#1E9C6D';
+          if (status === 'Signed Up Only') return '#F29D38';
+          return '#aaa';
+        };
 
-              return (
-                <TableRow key={index}>
-                  <TableCell sx={{ color: '#fff', border: 'none' }}>{item.name}</TableCell>
-                  <TableCell sx={{ color: '#fff', border: 'none' }}>
-                    <Box
-                      sx={{
-                        backgroundColor: getStatusColor(item.status) + '33',
-                        color: getStatusColor(item.status),
-                        px: 2,
-                        py: 0.5,
-                        borderRadius: 3,
-                        display: 'inline-block',
-                        fontSize: '0.75rem',
-                      }}
-                    >
-                      {item.status}
-                    </Box>
-                  </TableCell>
-                  <TableCell sx={{ color: '#fff', border: 'none' }}>{item.reward}</TableCell>
-                  <TableCell sx={{ color: '#aaa', border: 'none' }}>{item.date}</TableCell>
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-      </Box>
+        return (
+          <TableRow key={index}>
+            <TableCell sx={{ color: '#fff', border: 'none' }}>{item.name}</TableCell>
+            <TableCell sx={{ color: '#fff', border: 'none' }}>
+              <Box
+                sx={{
+                  backgroundColor: getStatusColor(item.status) + '33',
+                  color: getStatusColor(item.status),
+                  px: 2,
+                  py: 0.5,
+                  borderRadius: 3,
+                  display: 'inline-block',
+                  fontSize: '0.75rem',
+                }}
+              >
+                {item.status}
+              </Box>
+            </TableCell>
+            <TableCell sx={{ color: '#fff', border: 'none' }}>{item.reward}</TableCell>
+            <TableCell sx={{ color: '#aaa', border: 'none' }}>{item.date}</TableCell>
+          </TableRow>
+        );
+      })}
+    </TableBody>
+  </Table>
+</Box>
+
 
     </>
   );

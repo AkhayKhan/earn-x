@@ -78,7 +78,7 @@ const ProfileView = () => {
         alignItems: 'flex-start',
         pt: { xs: '70px', md: '80px' },
         pb: 4,
-        mt: 10,
+        mt: 4,
       }}
     >
       <Box
@@ -98,8 +98,9 @@ const ProfileView = () => {
         {/* Sidebar */}
         <Box
           sx={{
-            width: { xs: '100%', md: '250px' },
+            width: { xs: '95%', md: '250px' },
             display: 'flex',
+            margin:'auto',
             p:2,
             flexDirection: 'column',
             justifyContent: 'space-between',
@@ -140,7 +141,7 @@ const ProfileView = () => {
               fontSize: '0.9rem',
               padding: '10px 16px',
               borderRadius: '30px',
-              mt: isMobile ? 2 : 0,
+              mt: isMobile ? 1 : 0,
               '&:hover': {
                 backgroundColor: '#FF0000',
               },

@@ -39,7 +39,7 @@ const CustomInput = ({ label, type = 'text', value, onChange, name }) => (
         style: {
           color: '#fff',
           borderRadius: 30,
-          padding: '12px 20px',
+          padding: '2px 20px',
           background: 'rgba(6, 6, 20, 0.5)',
           backdropFilter: 'blur(5px)',
           boxShadow: 'inset 0 2.91px 8px #FFFFFF14, inset 0 -2.91px 8px #FFFFFF14',

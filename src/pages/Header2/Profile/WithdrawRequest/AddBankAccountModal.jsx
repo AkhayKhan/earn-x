@@ -12,7 +12,7 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 360,
+    width: 340,
     bgcolor: '#13131C',
     borderRadius: '20px',
     boxShadow: 24,
@@ -64,7 +64,7 @@ const AddBankAccountModal = ({ open, onClose, onSubmit }) => {
     };
 
     return (
-        <Modal open={open} onClose={onClose}>
+        <Modal open={open} onClose={onClose} >
             <Box sx={style}>
                 <Typography variant="h6" sx={{ color: '#fff', mb: 1 }}>
                     Add Your Bank
